@@ -65,12 +65,48 @@ sed -i.bak 's/Ethernet2\/25/Ethernet2\/3/g' $j
 sed -i.bak 's/Ethernet2\/26/Ethernet2\/4/g' $j
 sed -i.bak 's/Ethernet2\/27/Ethernet2\/5/g' $j
 sed -i.bak 's/Ethernet2\/28/Ethernet2\/6/g' $j
+sed -i.bak 's/Ethernet2\/6/Ethernet2\/9/g' $j
+sed -i.bak 's/Ethernet2\/14/Ethernet2\/10/g' $j
 rm $j.bak
 done
 
 for j in `ls dc*inner*`
 do
 echo Fixing $j
+sed -i.bak 's/Ethernet2\/15/Ethernet2\/3/g' $j
+sed -i.bak 's/Ethernet2\/16/Ethernet2\/4/g' $j
+sed -i.bak 's/Ethernet2\/17/Ethernet2\/5/g' $j
+sed -i.bak 's/Ethernet2\/18/Ethernet2\/6/g' $j
+sed -i.bak 's/Ethernet2\/29/Ethernet2\/9/g' $j
+sed -i.bak 's/Ethernet2\/30/Ethernet2\/10/g' $j
+rm $j.bak
+done
+
+cd ..
+done
+pwd
+cd ../..
+
+# Rollback Cleanup fix
+cd output/N7K_NEXT_CLEANUP_ROLLBACK/
+for i in `ls -d  */ `
+do
+cd $i
+for j in `ls dc*outer*`
+do
+sed -i.bak 's/Ethernet5/Ethernet3/g' $j
+sed -i.bak 's/Ethernet2/Ethernet3/g' $j
+sed -i.bak 's/Ethernet2\/25/Ethernet2\/3/g' $j
+sed -i.bak 's/Ethernet2\/26/Ethernet2\/4/g' $j
+sed -i.bak 's/Ethernet2\/27/Ethernet2\/5/g' $j
+sed -i.bak 's/Ethernet2\/28/Ethernet2\/6/g' $j
+rm $j.bak
+done
+
+for j in `ls dc*inner*`
+do
+echo Fixing $j
+sed -i.bak 's/Ethernet2/Ethernet4/g' $j
 sed -i.bak 's/Ethernet2\/15/Ethernet2\/3/g' $j
 sed -i.bak 's/Ethernet2\/16/Ethernet2\/4/g' $j
 sed -i.bak 's/Ethernet2\/17/Ethernet2\/5/g' $j
